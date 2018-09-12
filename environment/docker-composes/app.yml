@@ -1,0 +1,23 @@
+# ambiente de desenvolvimento e produção com:
+# dados salvos em: /var/mysql/data, arquivo de configuração
+# para inicializar mysql config/mysql/my.cnf
+#
+#
+version: "3"
+services:
+  web:
+    build:
+      context: ../../
+      dockerfile: environment/docker-files/node/Dockerfile.${ENVIRONMENT} #dev|prod
+    image: ${APP_NAME}/node:8
+    restart: on-failure
+    volumes:
+      #app_dir
+      - ../../:/usr/src/app
+    working_dir: '/usr/src/app'
+    environment:
+      VIRTUAL_HOST: ${VIRTUAL_HOST}
+networks:
+  default:
+    external:
+      name: ${NETWORK:-webproxy}

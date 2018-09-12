@@ -1,0 +1,24 @@
+FROM node:8-alpine
+
+RUN mkdir -p /usr/src/app
+
+WORKDIR /usr/src/app
+
+#RUN apt-get update && apt-get nodejs-npm
+
+# nodemon global
+RUN npm install -g nodemon
+
+#eslint linting utility for json
+RUN npm install -g eslint
+
+COPY package.json /usr/src/app/
+
+RUN cd /usr/src/app
+RUN npm install && npm cache clean --force
+
+COPY . /usr/src/app
+
+EXPOSE 3000
+
+CMD [ "npm", "start" ]

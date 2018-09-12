@@ -1,0 +1,19 @@
+{
+    "name": "skeleton",
+    "version": "1.0.0",
+    "description": "Node skeleton Application",
+    "main": "app.js",
+    "scripts": {
+        "start": "nodemon app.js"
+    },
+    "keywords": [
+        "node.js",
+        "skeleton"
+    ],
+    "author": "Frederico Martini",
+    "license": "ISC",
+    "dependencies": {
+        "dotenv": "^6.0.0",
+        "express": "^4.16.3"
+    }
+}
